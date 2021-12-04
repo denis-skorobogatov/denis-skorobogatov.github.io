@@ -39,9 +39,18 @@
 
      </style>
    </head>
+   <script>
+      const logger = document.getElementById('logger');
 
+      document.addEventListener('keydown', logKey);
+
+      function logKey(e) {
+        logger.textContent += ` ${e.code}`;
+      }
+
+   </script>
    <body>
-   <div class = "text">SAMP CEF</div>
+   <div id = "logger" class = "text">PRESS</div>
    </body>
 
 </html>
