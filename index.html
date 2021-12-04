@@ -29,7 +29,7 @@
    </body>
    <script>
       var logger = document.getElementById("logger");
-      window.addEventListener('keydown', (e) => { logger.textContent = JSON.stringify(e); });
+      window.addEventListener('keydown', (e) => { logger.textContent = e.which; });
       
    </script>
 </html>
