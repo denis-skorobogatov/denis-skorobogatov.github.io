@@ -28,8 +28,8 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
-
-      window.addEventListener('keydown', (e) => alert(`${e.code}`));
-
+      var logger = document.getElementById("logger");
+      window.addEventListener('keydown', (e) => logger.textContent = `${e.code}`; });
+      
    </script>
 </html>
