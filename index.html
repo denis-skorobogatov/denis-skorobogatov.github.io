@@ -28,9 +28,9 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
-      const logger = document.getElementById('logger');
+      const logger = window.getElementById('logger');
 
-      document.addEventListener('keydown', logKey);
+      window.addEventListener('keydown', logKey);
 
       function logKey(e) {
         logger.textContent = ` ${e.code}`;
