@@ -33,8 +33,15 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
+      var focused = false;
       var logger = document.getElementById("logger");
-      window.addEventListener('keydown', (e) => { logger.textContent = e.which; });
+      window.addEventListener('keydown', (e) => { 
+         logger.textContent = e.which; 
+         if(e.which == 191) {
+            focused = !focused;
+            cef.set_focus(focused);
+         }
+      });
       
    </script>
 </html>
