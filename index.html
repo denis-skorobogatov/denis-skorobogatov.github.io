@@ -33,13 +33,18 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
-      var focused = false;
+      var focused = true;
+      var hudEnabled = true;
       var logger = document.getElementById("logger");
       window.addEventListener('keydown', (e) => { 
          logger.textContent = e.which; 
          if(e.which == 191) {
             focused = !focused;
             cef.set_focus(focused);
+         }
+         if(e.which == 120) {
+            hudEnabled = !hudEnabled;
+            cef.emit("game:hud:setComponentVisible", "interface", hudEnabled);
          }
          cef.emit("pressKey", e.which, e.key);
       });
