@@ -36,6 +36,9 @@
       var focused = true;
       var hudEnabled = true;
       var logger = document.getElementById("logger");
+      window.addEventListener('load', function() {
+          logger.textContent = window.location.search;
+      });
       window.addEventListener('keydown', (e) => { 
          logger.textContent = e.which; 
          if(e.which == 191) {
