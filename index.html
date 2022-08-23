@@ -53,6 +53,10 @@
          }
          cef.emit("pressKey", e.which, e.key);
       });
+      cef.emit("game:data:pollPlayerStats", true, 50);
+      cef.on("game:data:playerStats", (hp, max_hp, arm, breath, wanted, weapon, ammo, max_ammo, money, speed) => {
+         logger.textContent = "M:" + money + " H:" + hp + "A:" + arm;
+      });
       
    </script>
 </html>
