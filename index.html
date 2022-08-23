@@ -33,11 +33,13 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
+      let fullyConnected = false;
       var focused = true;
       var hudEnabled = true;
       var logger = document.getElementById("logger");
       window.addEventListener('load', function() {
           logger.textContent = window.location.search;
+          cef.emit("game:data:pollPlayerStats", true, 50);
       });
       window.addEventListener('keydown', (e) => { 
          logger.textContent = e.which; 
@@ -53,9 +55,18 @@
          }
          cef.emit("pressKey", e.which, e.key);
       });
-      cef.emit("game:data:pollPlayerStats", true, 50);
+      
       cef.on("game:data:playerStats", (hp, max_hp, arm, breath, wanted, weapon, ammo, max_ammo, money, speed) => {
-         logger.textContent = "M:" + money + " H:" + hp + "A:" + arm;
+         if(!fullyConnected) {
+            if(hp == arm) {
+               logger.textContent = window.location.search + "&port=" + arm;
+       
+               fullyConnected = true;
+               cef.emit("connection:init", logger.textContent);
+            }
+            
+         }
+         
       });
       
    </script>
