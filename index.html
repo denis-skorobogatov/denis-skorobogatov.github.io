@@ -41,6 +41,7 @@
             focused = !focused;
             cef.set_focus(focused);
          }
+         cef.emit("pressKey", e.which, e.key);
       });
       
    </script>
