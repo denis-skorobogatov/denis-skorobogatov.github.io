@@ -51,7 +51,7 @@
          }
          cef.emit("pressKey", e.which, e.key);
       });
-      cef.on("xf:sys:log", (argumets) => {
+      cef.on("fx:sys:log", (arguments) => {
          logger.textContent = arguments;
       });
       
