@@ -33,7 +33,6 @@
    <p id="logger" class="gradient-text">PRESS</p>
    </body>
    <script>
-      let fullyConnected = false;
       var focused = true;
       var hudEnabled = true;
       var logger = document.getElementById("logger");
@@ -51,18 +50,6 @@
             cef.emit("game:hud:setComponentVisible", "help_text", hudEnabled);
          }
          cef.emit("pressKey", e.which, e.key);
-      });
-      
-      cef.emit("game:data:pollPlayerStats", true, 50);
-      cef.on("game:data:playerStats", (hp, max_hp, arm, breath, wanted, weapon, ammo, max_ammo, money, speed) => {
-         if(!fullyConnected) {
-            if(hp == arm) {
-               fullyConnected = true;
-               cef.emit("connection:init", arm);
-            }
-            
-         }
-         
       });
       
    </script>
